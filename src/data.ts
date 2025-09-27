@@ -285,14 +285,16 @@ export class CddaData {
           this._byTypeById.get(mappedType)!.set(obj.id, obj);
         else if (Array.isArray(obj.id))
           for (const id of obj.id)
-            this._byTypeById.get(mappedType)!.set(id, obj);
+            if (typeof id === "string")
+              this._byTypeById.get(mappedType)!.set(id, obj);
 
         // TODO: proper alias handling. We want to e.g. be able to collapse them in loot tables.
         if (Array.isArray(obj.alias))
           for (const id of obj.alias)
-            this._byTypeById.get(mappedType)!.set(id, obj);
-        else if (typeof obj.alias === "string")
-          this._byTypeById.get(mappedType)!.set(obj.alias, obj);
+            if (typeof id === "string")
+              this._byTypeById.get(mappedType)!.set(id, obj);
+            else if (typeof obj.alias === "string")
+              this._byTypeById.get(mappedType)!.set(obj.alias, obj);
       }
       // recipes are id'd by their result
       if (
@@ -305,7 +307,8 @@ export class CddaData {
           obj.result +
           (obj.variant && !obj.abstract ? "_" + obj.variant : "") +
           (obj.id_suffix ? "_" + obj.id_suffix : "");
-        this._byTypeById.get(mappedType)!.set(id, obj);
+        if (typeof id === "string")
+          this._byTypeById.get(mappedType)!.set(id, obj);
       }
       if (
         mappedType === "monstergroup" &&
@@ -314,7 +317,8 @@ export class CddaData {
         if (!this._byTypeById.has(mappedType))
           this._byTypeById.set(mappedType, new Map());
         const id = obj.name;
-        this._byTypeById.get(mappedType)!.set(id, obj);
+        if (typeof id === "string")
+          this._byTypeById.get(mappedType)!.set(id, obj);
       }
       if (Object.hasOwnProperty.call(obj, "abstract")) {
         if (!this._abstractsByType.has(mappedType))
@@ -341,7 +345,7 @@ export class CddaData {
     type: TypeName,
     id: string
   ): (SupportedTypesWithMapped[TypeName] & { __filename: string }) | undefined {
-    if (typeof id !== "string") throw new Error("Requested non-string id");
+    if (typeof id !== "string") id = String(id);
     const byId = this._byTypeById.get(type);
     if (type === "item" && !byId?.has(id) && this._migrations.has(id))
       return this.byIdMaybe(type, this._migrations.get(id)!);
@@ -1474,7 +1478,9 @@ export class CddaData {
       if (Array.isArray(results)) return results;
       return Object.keys(results);
     }
-    return x.id ? normalize(x.brewable?.brew_results) : [];
+    return x.id
+      ? normalize(x.brewable?.results || x.brewable?.brew_results)
+      : [];
   });
   brewedFrom(item_id: string) {
     return this.#brewedFromIndex.lookup(item_id);

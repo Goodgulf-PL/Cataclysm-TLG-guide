@@ -57,7 +57,7 @@ const data = getContext<CddaData>("data");
       <dd>
         <dl style="font-variant: tabular-nums">
           {#each item.vitamins as [vitamin, rdapct]}
-            {@const v = data.byId("vitamin", vitamin)}
+            {@const v = data.byIdMaybe("vitamin", vitamin)}
             {@const massPerUnit = v.weight_per_unit
               ? parseMass(v.weight_per_unit)
               : null}

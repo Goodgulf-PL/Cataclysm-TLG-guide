@@ -709,8 +709,10 @@ export type ItemBasicInfo = {
     append?: boolean;
   }[];
   brewable?: {
-    brew_results: string[] | Record<string, number>; // item_id
+    results?: string[] | Record<string, number>; // item_id
+    brew_results?: string[] | Record<string, number>; // item_id
     brew_time?: duration;
+    time?: duration;
   };
   milling?: {
     into?: string; // item_id
