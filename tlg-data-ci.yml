@@ -1,0 +1,86 @@
+name: Build TLG Data
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout TLG Data Repo
+        uses: actions/checkout@v4
+        with:
+          path: tlg-data
+
+      - name: Checkout Cataclysm-TLG
+        uses: actions/checkout@v4
+        with:
+          repository: Cataclysm-TLG/Cataclysm-TLG
+          path: cataclysm-tlg
+          ref: master
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+
+      - name: Install dependencies
+        run: |
+          cd tlg-data
+          npm init -y
+          npm install glob fs-extra
+
+      - name: Create build script
+        run: |
+          cd tlg-data
+          cat > build.js << 'EOF'
+          const fs = require('fs-extra');
+          const glob = require('glob');
+          const path = require('path');
+
+          async function buildAllJson() {
+            const dataDir = path.join(__dirname, '../cataclysm-tlg/data');
+            const jsonFiles = glob.sync('**/*.json', { cwd: dataDir });
+            const allData = [];
+
+            for (const file of jsonFiles) {
+              const filePath = path.join(dataDir, file);
+              try {
+                const content = fs.readFileSync(filePath, 'utf8');
+                const data = JSON.parse(content);
+                if (Array.isArray(data)) {
+                  allData.push(...data);
+                } else {
+                  allData.push(data);
+                }
+              } catch (e) {
+                console.warn(`Skipping ${file}: ${e.message}`);
+              }
+            }
+
+            const outputDir = path.join(__dirname, 'data', 'latest');
+            fs.ensureDirSync(outputDir);
+            fs.writeFileSync(path.join(outputDir, 'all.json'), JSON.stringify(allData, null, 2));
+            console.log(`Built all.json with ${allData.length} objects`);
+          }
+
+          buildAllJson().catch(console.error);
+          EOF
+
+      - name: Run build script
+        run: |
+          cd tlg-data
+          node build.js
+
+      - name: Commit and push changes
+        run: |
+          cd tlg-data
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git add data/
+          git commit -m "Update TLG data from latest commit" || echo "No changes to commit"
+          git push
