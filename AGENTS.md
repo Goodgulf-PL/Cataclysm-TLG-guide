@@ -1,8 +1,8 @@
 ## Project Overview
 
-This repository hosts a web-based guide for Cataclysm: Dark Days Ahead (CDDA) that presents searchable, browsable data about game entities such as items and monsters.
-The goal is to provide players with a quick reference for in-game information, mirroring the semantics from the upstream CDDA codebase and JSON data.
-When behavior or terminology is unclear, cross-reference the official Cataclysm-DDA source, which may already be checked out in ../Cataclysm-DDA.
+This repository hosts a web-based guide for Cataclysm: The Last Generation (TLG) that presents searchable, browsable data about game entities such as items and monsters.
+The goal is to provide players with a quick reference for in-game information, mirroring the semantics from the upstream TLG codebase and JSON data.
+When behavior or terminology is unclear, cross-reference the official Cataclysm-TLG source, which may already be checked out in ../Cataclysm-TLG.
 
 ## Coding Conventions
 
@@ -34,7 +34,7 @@ When behavior or terminology is unclear, cross-reference the official Cataclysm-
 
 ## Backwards compatibility
 
-cdda-guide is intended to function with data from the master branch of Cataclysm-DDA, as well as with the most recent stable version.
+ctlg-guide is intended to function with data from the master branch of Cataclysm-TLG, as well as with the most recent stable version.
 Compatibility with older versions is desirable but not required.
 When making changes, if it is easy to maintain compatibility with older versions, please do so. However, if it would require a significant amount of work, it is acceptable to only support the latest stable version and master.
 
