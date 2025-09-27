@@ -58,10 +58,12 @@ const data = getContext<CddaData>("data");
         <dl style="font-variant: tabular-nums">
           {#each item.vitamins as [vitamin, rdapct]}
             {@const v = data.byIdMaybe("vitamin", vitamin)}
-            {@const massPerUnit = v.weight_per_unit
+            {@const massPerUnit = v?.weight_per_unit
               ? parseMass(v.weight_per_unit)
               : null}
-            {@const unitsPerDay = (24 * 60 * 60) / parseDuration(v.rate)}
+            {@const unitsPerDay = v
+              ? (24 * 60 * 60) / parseDuration(v.rate)
+              : 1}
             {@const mass =
               typeof rdapct === "string"
                 ? parseMass(rdapct)
@@ -78,7 +80,7 @@ const data = getContext<CddaData>("data");
               <ThingLink id={vitamin} type="vitamin" />
             </dt>
             <dd>
-              {#if v.vit_type === "counter" || v.vit_type === "drug"}
+              {#if v?.vit_type === "counter" || v?.vit_type === "drug"}
                 {rda} U
               {:else}
                 {rda?.toFixed(2)}%{" "}
