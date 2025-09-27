@@ -24,16 +24,19 @@ const has = (list: string | string[] | undefined, id: string) =>
 const postThresholdMutations = data
   .byType("mutation")
   .filter((m) => has(m.threshreq, item.id))
+  .map((m) => data.byId("mutation", m.id))
   .sort(byName);
 
 const requiredBy = data
   .byType("mutation")
   .filter((m) => has(m.prereqs, item.id) || has(m.prereqs2, item.id))
+  .map((m) => data.byId("mutation", m.id))
   .sort(byName);
 
 const canceledByMutations = data
   .byType("mutation")
   .filter((m) => has(m.cancels, item.id))
+  .map((m) => data.byId("mutation", m.id))
   .sort(byName);
 
 const canceledByBionics = data
