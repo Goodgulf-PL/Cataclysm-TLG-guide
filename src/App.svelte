@@ -34,7 +34,8 @@ fetch(
 
 const url = new URL(location.href);
 const version = url.searchParams.get("v") ?? "latest";
-const locale = url.searchParams.get("lang");
+// Disable other languages, force English only
+const locale = null;
 data.setVersion(version, locale);
 
 const tilesets = [
@@ -297,12 +298,7 @@ function langHref(lang: string, href: string) {
   {#if builds}
     {@const build_number =
       version === "latest" ? builds[0].build_number : version}
-    {#each [...(builds.find((b) => b.build_number === build_number)?.langs ?? [])].sort( (a, b) => a.localeCompare(b) ) as lang}
-      <link
-        rel="alternate"
-        hreflang={lang}
-        href={langHref(lang, currentHref)} />
-    {/each}
+    <!-- Alternate language links disabled -->
   {/if}
 </svelte:head>
 
@@ -602,9 +598,6 @@ Anyway?`,
             location.href = url.toString();
           }}>
           <option value="en">English</option>
-          {#each [...(builds.find((b) => b.build_number === build_number)?.langs ?? [])].sort( (a, b) => a.localeCompare(b) ) as lang}
-            <option value={lang}>{getLanguageName(lang)}</option>
-          {/each}
         </select>
       {:else}
         <select disabled><option>{t("Loading...")}</option></select>
