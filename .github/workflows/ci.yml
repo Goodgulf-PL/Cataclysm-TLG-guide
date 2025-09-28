@@ -44,10 +44,10 @@ jobs:
       #   run: yarn transifex-push
 
       - name: Deploy 🚀
-         if: github.event_name == 'push'
-         uses: cloudflare/pages-action@v1
-         with:
-           accountId: 86150c6c67881e3f592f804b93c723ff
-           projectName: ctlg-guide
-           directory: dist
-           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        if: github.event_name == 'push'
+        uses: cloudflare/pages-action@v1
+        with:
+          accountId: 86150c6c67881e3f592f804b93c723ff
+          projectName: ctlg-guide
+          directory: dist
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
