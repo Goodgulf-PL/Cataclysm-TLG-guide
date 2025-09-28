@@ -455,12 +455,13 @@ Anyway?`,
     <p>
       <InterpolatedTranslation
         str={t(
-          `The {link_original_guide} for {link_cdda_game} is developed on {link_original_github} by {link_nornagon}. This guide was created by Goodgulf-PL (with AI assistance) for {link_tlg}. If you notice any problems with this version, please {link_file_an_issue}!`,
+          `The {link_original_guide} for {link_cdda_game} is developed on {link_original_github} by {link_nornagon}. This {link_this_guide} was created by Goodgulf-PL (with AI assistance) for {link_tlg}. If you notice any problems with this version, please {link_file_an_issue}!`,
           {
             link_original_guide: "{link_original_guide}",
             link_cdda_game: "{link_cdda_game}",
             link_original_github: "{link_original_github}",
             link_nornagon: "{link_nornagon}",
+            link_this_guide: "{link_this_guide}",
             link_tlg: "{link_tlg}",
             link_file_an_issue: "{link_file_an_issue}",
           }
@@ -469,17 +470,20 @@ Anyway?`,
         slot1="link_cdda_game"
         slot2="link_original_github"
         slot3="link_nornagon"
-        slot4="link_tlg"
-        slot5="link_file_an_issue">
+        slot4="link_this_guide"
+        slot5="link_tlg"
+        slot6="link_file_an_issue">
         <a slot="0" href="https://cdda-guide.nornagon.net/">Original Guide</a>
         <a slot="1" href="https://cataclysmdda.org/"
           >Cataclysm: Dark Days Ahead</a>
         <a slot="2" href="https://github.com/nornagon/cdda-guide/">GitHub</a>
         <a slot="3" href="https://www.nornagon.net/">nornagon</a>
-        <a slot="4" href="https://github.com/Cataclysm-TLG/Cataclysm-TLG/"
+        <a slot="4" href="https://github.com/Goodgulf-PL/Cataclysm-TLG-guide/"
+          >This guide</a>
+        <a slot="5" href="https://github.com/Cataclysm-TLG/Cataclysm-TLG/"
           >Cataclysm: The Last Generation</a>
         <a
-          slot="5"
+          slot="6"
           href="https://github.com/Goodgulf-PL/Cataclysm-TLG-guide/issues"
           >{t("file an issue")}</a>
       </InterpolatedTranslation>
