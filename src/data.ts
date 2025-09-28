@@ -423,7 +423,7 @@ export class CddaData {
         }`
       );
     if (parent === obj) {
-      // Working around bad data upstream, see: https://github.com/CleverRaven/Cataclysm-DDA/pull/53930
+      // Working around bad data upstream, see: https://github.com/Cataclysm-TLG/Cataclysm-TLG/pull/53930
       console.warn("Object copied from itself:", obj);
       this._flattenCache.set(obj, obj);
       return obj;
@@ -1767,7 +1767,7 @@ export const getVehiclePartIdAndVariant = (
   const m = /^(.+)#(.+?)$/.exec(compositePartId);
   if (m) return [m[1], m[2]];
 
-  // TODO: only check this for releases older than https://github.com/CleverRaven/Cataclysm-DDA/pull/65871
+  // TODO: only check this for releases older than https://github.com/Cataclysm-TLG/Cataclysm-TLG/pull/65871
   for (const variant of vpartVariants) {
     if (compositePartId.endsWith("_" + variant)) {
       return [
@@ -1934,7 +1934,7 @@ const fetchJson = async (
   progress: (receivedBytes: number, totalBytes: number) => void
 ) => {
   return fetchJsonWithProgress(
-    `https://raw.githubusercontent.com/nornagon/cdda-data/main/data/${version}/all.json`,
+    `https://raw.githubusercontent.com/Goodgulf-PL/ctlg-data/main/data/${version}/all.json`,
     progress
   );
 };
@@ -1945,7 +1945,7 @@ const fetchLocaleJson = async (
   progress: (receivedBytes: number, totalBytes: number) => void
 ) => {
   return fetchJsonWithProgress(
-    `https://raw.githubusercontent.com/nornagon/cdda-data/main/data/${version}/lang/${locale}.json`,
+    `https://raw.githubusercontent.com/Goodgulf-PL/ctlg-data/main/data/${version}/lang/${locale}.json`,
     progress
   );
 };
