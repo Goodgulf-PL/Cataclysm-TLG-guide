@@ -551,13 +551,14 @@ Anyway?`,
           }}>
           <optgroup label="Stable">
             {#each builds.filter((b) => !b.prerelease) as build}
-              <option value={build.build_number}>{build.build_number}</option>
+              <option value={build.build_number}
+                >{build.build_number}{#if build.build_number === builds[0].build_number}&nbsp;(latest){/if}</option>
             {/each}
           </optgroup>
           <optgroup label="Experimental">
-            {#each builds.filter((b) => b.prerelease) as build, i}
+            {#each builds.filter((b) => b.prerelease) as build}
               <option value={build.build_number}
-                >{build.build_number}{#if i === 0}&nbsp;(latest){/if}</option>
+                >{build.build_number}{#if build.build_number === builds[0].build_number}&nbsp;(latest){/if}</option>
             {/each}
           </optgroup>
         </select>
