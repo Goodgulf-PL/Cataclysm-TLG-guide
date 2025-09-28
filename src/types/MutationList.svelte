@@ -14,10 +14,12 @@ const allPrereqs = (m: Mutation) =>
   normalizeStringList(m.prereqs)
     .concat(normalizeStringList(m.prereqs2))
     .concat(normalizeStringList(m.threshreq));
-let sortedMutations = topologicalSortComponentsByRank(mutations, (m) =>
-  allPrereqs(m)
-    .map((x) => data.byIdMaybe("mutation", x))
-    .filter(Boolean)
+let sortedMutations = topologicalSortComponentsByRank(
+  mutations,
+  (m) =>
+    allPrereqs(m)
+      .map((x) => data.byIdMaybe("mutation", x))
+      .filter(Boolean) as Mutation[]
 ).sort((a, b) => singularName(a[0][0]).localeCompare(singularName(b[0][0])));
 </script>
 

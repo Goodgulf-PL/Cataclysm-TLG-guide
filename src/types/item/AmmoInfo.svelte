@@ -1,6 +1,6 @@
 <script lang="ts">
 import { t } from "@transifex/native";
-import { CddaData, i18n, singularName } from "../../data";
+import { CddaData, singularName } from "../../data";
 import type { AmmoSlot, DamageUnit } from "../../types";
 import ThingLink from "../ThingLink.svelte";
 import { getContext } from "svelte";
@@ -22,7 +22,7 @@ const damage = Array.isArray(item.damage)
     };
 
 function computeLoudness(item: AmmoSlot): number {
-  // https://github.com/CleverRaven/Cataclysm-DDA/blob/5612551d1e4e4babfe4ae0dab81f8d8b49991783/src/item_factory.cpp#L264-L271
+  // https://github.com/Cataclysm-TLG/Cataclysm-TLG/blob/5612551d1e4e4babfe4ae0dab81f8d8b49991783/src/item_factory.cpp#L264-L271
   if ((item.loudness ?? -1) >= 0) return item.loudness ?? 0;
   return (
     (item.range ?? 0) * 2 +

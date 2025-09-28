@@ -23,20 +23,28 @@ const has = (list: string | string[] | undefined, id: string) =>
 
 const postThresholdMutations = data
   .byType("mutation")
-  .filter((m) => has(m.threshreq, item.id))
-  .map((m) => data.byId("mutation", m.id))
+  .filter((m) => has(m.threshreq, item.id) && m.id && typeof m.id === "string")
+  .map((m) => data.byIdMaybe("mutation", m.id))
+  .filter((m): m is Mutation & { __filename: string } => m !== undefined)
   .sort(byName);
 
 const requiredBy = data
   .byType("mutation")
-  .filter((m) => has(m.prereqs, item.id) || has(m.prereqs2, item.id))
-  .map((m) => data.byId("mutation", m.id))
+  .filter(
+    (m) =>
+      (has(m.prereqs, item.id) || has(m.prereqs2, item.id)) &&
+      m.id &&
+      typeof m.id === "string"
+  )
+  .map((m) => data.byIdMaybe("mutation", m.id))
+  .filter((m): m is Mutation & { __filename: string } => m !== undefined)
   .sort(byName);
 
 const canceledByMutations = data
   .byType("mutation")
-  .filter((m) => has(m.cancels, item.id))
-  .map((m) => data.byId("mutation", m.id))
+  .filter((m) => has(m.cancels, item.id) && m.id && typeof m.id === "string")
+  .map((m) => data.byIdMaybe("mutation", m.id))
+  .filter((m): m is Mutation & { __filename: string } => m !== undefined)
   .sort(byName);
 
 const canceledByBionics = data
@@ -48,6 +56,11 @@ const conflictsWithBionics = data
   .byType("bionic")
   .filter((b) => has(b.mutation_conflicts, item.id))
   .sort(byName);
+
+const getMutations = (ids: string | string[]) =>
+  normalizeStringList(ids)
+    .map((id) => data.byIdMaybe("mutation", id))
+    .filter(Boolean) as Mutation[];
 </script>
 
 <h1>
@@ -200,19 +213,13 @@ const conflictsWithBionics = data
     {#if item.changes_to?.length}
       <dt>{t("Changes To", { _context })}</dt>
       <dd>
-        <MutationList
-          mutations={normalizeStringList(item.changes_to)
-            .map((id) => data.byIdMaybe("mutation", id))
-            .filter(Boolean)} />
+        <MutationList mutations={getMutations(item.changes_to)} />
       </dd>
     {/if}
     {#if item.cancels?.length}
       <dt>{t("Cancels", { _context })}</dt>
       <dd>
-        <MutationList
-          mutations={normalizeStringList(item.cancels)
-            .map((id) => data.byIdMaybe("mutation", id))
-            .filter(Boolean)} />
+        <MutationList mutations={getMutations(item.cancels)} />
       </dd>
     {/if}
     {#if canceledByMutations.length}

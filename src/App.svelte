@@ -21,7 +21,9 @@ let builds:
     }[]
   | null = null;
 
-fetch("https://raw.githubusercontent.com/nornagon/cdda-data/main/builds.json")
+fetch(
+  "https://raw.githubusercontent.com/Goodgulf-PL/ctlg-data/main/builds.json"
+)
   .then((d) => d.json())
   .then((b) => {
     builds = b;
@@ -38,39 +40,39 @@ data.setVersion(version, locale);
 const tilesets = [
   {
     name: "AltiCa",
-    url: "https://raw.githubusercontent.com/CleverRaven/Cataclysm-DDA/{version}/gfx/Altica",
+    url: "https://raw.githubusercontent.com/Cataclysm-TLG/Cataclysm-TLG/{version}/gfx/Altica",
   },
   {
     name: "BrownLikeBears",
-    url: "https://raw.githubusercontent.com/CleverRaven/Cataclysm-DDA/{version}/gfx/BrownLikeBears",
+    url: "https://raw.githubusercontent.com/Cataclysm-TLG/Cataclysm-TLG/{version}/gfx/BrownLikeBears",
   },
   {
     name: "Chibi_Ultica",
-    url: "https://raw.githubusercontent.com/CleverRaven/Cataclysm-DDA/{version}/gfx/ChibiUltica",
+    url: "https://raw.githubusercontent.com/Cataclysm-TLG/Cataclysm-TLG/{version}/gfx/ChibiUltica",
   },
   {
     name: "Cuteclysm(Alpha)",
-    url: "https://raw.githubusercontent.com/CleverRaven/Cataclysm-DDA/{version}/gfx/Cuteclysm",
+    url: "https://raw.githubusercontent.com/Cataclysm-TLG/Cataclysm-TLG/{version}/gfx/Cuteclysm",
   },
   {
     name: "Hollow Moon",
-    url: "https://raw.githubusercontent.com/CleverRaven/Cataclysm-DDA/{version}/gfx/HollowMoon",
+    url: "https://raw.githubusercontent.com/Cataclysm-TLG/Cataclysm-TLG/{version}/gfx/HollowMoon",
   },
   {
     name: "MSXotto+",
-    url: "https://raw.githubusercontent.com/CleverRaven/Cataclysm-DDA/{version}/gfx/MshockXotto%2B",
+    url: "https://raw.githubusercontent.com/Cataclysm-TLG/Cataclysm-TLG/{version}/gfx/MshockXotto%2B",
   },
   {
     name: "NeoDays",
-    url: "https://raw.githubusercontent.com/CleverRaven/Cataclysm-DDA/{version}/gfx/NeoDaysTileset",
+    url: "https://raw.githubusercontent.com/Cataclysm-TLG/Cataclysm-TLG/{version}/gfx/NeoDaysTileset",
   },
   {
     name: "RetroDays",
-    url: "https://raw.githubusercontent.com/CleverRaven/Cataclysm-DDA/{version}/gfx/RetroDaysTileset",
+    url: "https://raw.githubusercontent.com/Cataclysm-TLG/Cataclysm-TLG/{version}/gfx/RetroDaysTileset",
   },
   {
     name: "UltiCa",
-    url: "https://raw.githubusercontent.com/CleverRaven/Cataclysm-DDA/{version}/gfx/UltimateCataclysm",
+    url: "https://raw.githubusercontent.com/Cataclysm-TLG/Cataclysm-TLG/{version}/gfx/UltimateCataclysm",
   },
 ];
 
@@ -457,19 +459,36 @@ Anyway?`,
     <p>
       <InterpolatedTranslation
         str={t(
-          `The Guide is developed on {link_github} by {link_nornagon}. If you notice any problems, please {link_file_an_issue}!`,
+          `The {link_original_guide} for {link_cdda_game} is developed on {link_original_github} by {link_nornagon}. {link_this_version} is a {link_tlg} specific fork by Goodgulf-PL. If you notice any problems with this version, please {link_file_an_issue}!`,
           {
-            link_github: "{link_github}",
+            link_original_guide: "{link_original_guide}",
+            link_cdda_game: "{link_cdda_game}",
+            link_original_github: "{link_original_github}",
             link_nornagon: "{link_nornagon}",
+            link_this_version: "{link_this_version}",
+            link_tlg: "{link_tlg}",
             link_file_an_issue: "{link_file_an_issue}",
           }
         )}
-        slot0="link_github"
-        slot1="link_nornagon"
-        slot2="link_file_an_issue">
-        <a slot="0" href="https://github.com/nornagon/cdda-guide">GitHub</a>
-        <a slot="1" href="https://www.nornagon.net">nornagon</a>
-        <a slot="2" href="https://github.com/nornagon/cdda-guide/issues"
+        slot0="link_original_guide"
+        slot1="link_cdda_game"
+        slot2="link_original_github"
+        slot3="link_nornagon"
+        slot4="link_this_version"
+        slot5="link_tlg"
+        slot6="link_file_an_issue">
+        <a slot="0" href="https://cdda-guide.nornagon.net/">Original Guide</a>
+        <a slot="1" href="https://cataclysmdda.org/"
+          >Cataclysm: Dark Days Ahead</a>
+        <a slot="2" href="https://github.com/nornagon/cdda-guide/">GitHub</a>
+        <a slot="3" href="https://www.nornagon.net/">nornagon</a>
+        <a slot="4" href="https://github.com/Goodgulf-PL/Cataclysm-TLG-guide/"
+          >This version</a>
+        <a slot="5" href="https://github.com/Cataclysm-TLG/Cataclysm-TLG/"
+          >Cataclysm: The Last Generation</a>
+        <a
+          slot="6"
+          href="https://github.com/Goodgulf-PL/Cataclysm-TLG-guide/issues"
           >{t("file an issue")}</a>
       </InterpolatedTranslation>
     </p>

@@ -97,7 +97,7 @@ const symbolForVehiclePartVariant = (
   partId: string,
   variant: string
 ): string => {
-  // TODO: https://github.com/CleverRaven/Cataclysm-DDA/pull/59563
+  // TODO: https://github.com/Cataclysm-TLG/Cataclysm-TLG/pull/59563
   const vehiclePart =
     data.byIdMaybe("vehicle_part", partId) ??
     (partId.startsWith("turret_")
@@ -121,7 +121,7 @@ const symbolForVehiclePartVariant = (
 };
 
 const colorForVehiclePart = (partId: string) => {
-  // TODO: https://github.com/CleverRaven/Cataclysm-DDA/pull/59563
+  // TODO: https://github.com/Cataclysm-TLG/Cataclysm-TLG/pull/59563
   const vehiclePart =
     data.byIdMaybe("vehicle_part", partId) ??
     (partId.startsWith("turret_")
@@ -161,7 +161,7 @@ const normalizedParts: NormalizedPartList[] = item.parts.map((part) => {
 const zForPart = (partId: string): number => {
   const vehiclePart = data.byIdMaybe("vehicle_part", partId);
   if (!vehiclePart) {
-    // TODO: https://github.com/CleverRaven/Cataclysm-DDA/pull/59563
+    // TODO: https://github.com/Cataclysm-TLG/Cataclysm-TLG/pull/59563
     if (partId.startsWith("turret_")) return zForPart("turret_generic");
     else {
       Sentry.captureException(new Error("Vehicle referenced unknown part"), {

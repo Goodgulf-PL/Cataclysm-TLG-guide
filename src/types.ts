@@ -46,7 +46,7 @@ export type ItemGroupEntry = (
   // it's made up by load_sub_ref(..., "container"), which then looks for
   // "contents-item" and "container-group". rg '"-item"' to find it.
   // The same is true for ammo{-item,-group}. "container-item" is special since
-  // https://github.com/CleverRaven/Cataclysm-DDA/pull/71041.
+  // https://github.com/Cataclysm-TLG/Cataclysm-TLG/pull/71041.
   "container-item"?: string | { item: string; variant: string };
   "container-group"?: string;
   "contents-item"?: string | string[];

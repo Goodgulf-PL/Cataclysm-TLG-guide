@@ -30,7 +30,7 @@ const things = data
   .filter((o) => "id" in o && o.id)
   .sort(byName);
 
-// Ref https://github.com/CleverRaven/Cataclysm-DDA/blob/658bbe419fb652086fd4d46bf5bbf9e137228464/src/item_factory.cpp#L4774
+// Ref https://github.com/Cataclysm-TLG/Cataclysm-TLG/blob/658bbe419fb652086fd4d46bf5bbf9e137228464/src/item_factory.cpp#L4774
 function getCategory(i: Item) {
   if (i.category) return i.category.toLowerCase();
   if (isItemSubtype("COMESTIBLE", i))

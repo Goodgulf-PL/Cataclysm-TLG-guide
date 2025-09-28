@@ -133,7 +133,7 @@ function damage(mon: Monster) {
   );
 }
 
-// From mtype.h. See also https://github.com/CleverRaven/Cataclysm-DDA/blob/master/doc/JSON_FLAGS.md#monsters
+// From mtype.h. See also https://github.com/Cataclysm-TLG/Cataclysm-TLG/blob/master/doc/JSON_FLAGS.md#monsters
 // prettier-ignore
 const mon_flag_descriptions: Record<string, string> = {
   SEES: "It can see you (and will run/follow)",
