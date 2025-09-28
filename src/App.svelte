@@ -455,7 +455,7 @@ Anyway?`,
     <p>
       <InterpolatedTranslation
         str={t(
-          `The {link_original_guide} for {link_cdda_game} is developed on {link_original_github} by {link_nornagon}. This {link_this_guide} was created by Goodgulf-PL (with AI assistance) for {link_tlg}. If you notice any problems with this version, please {link_file_an_issue}!`,
+          `The {link_original_guide} for {link_cdda_game} is developed on {link_original_github} by {link_nornagon}. {link_this_guide} was created by Goodgulf-PL (with AI assistance) for {link_tlg}. If you notice any problems with this version, please {link_file_an_issue}!`,
           {
             link_original_guide: "{link_original_guide}",
             link_cdda_game: "{link_cdda_game}",
