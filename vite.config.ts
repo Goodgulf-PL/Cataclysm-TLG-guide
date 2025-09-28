@@ -24,8 +24,8 @@ export default defineConfig({
       },
       includeAssets: ["favicon.png"],
       manifest: {
-        short_name: "Cataclysm Guide",
-        name: "The Hitchhiker's Guide to the Cataclysm",
+        short_name: "CTLG Guide",
+        name: "The Hitchhiker's Guide to the Cataclysm: The Last Generation",
         icons: [
           {
             src: "icon-192.png",
