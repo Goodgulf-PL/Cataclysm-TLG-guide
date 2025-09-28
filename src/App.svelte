@@ -34,8 +34,7 @@ fetch(
 
 const url = new URL(location.href);
 const version = url.searchParams.get("v") ?? "latest";
-// Disable other languages, force English only
-const locale = null;
+const locale = url.searchParams.get("lang") || null;
 data.setVersion(version, locale);
 
 const tilesets = [
@@ -314,22 +313,12 @@ newRandomPage();
 
 // This is one character behind the actual search value, because
 // of the throttle, but eh, it's good enough.
-let currentHref = location.href;
-$: item, search, (currentHref = location.href);
-
-function langHref(lang: string, href: string) {
-  const u = new URL(href);
-  u.searchParams.set("lang", lang);
-  return u.toString();
-}
 </script>
 
 <svelte:window on:click={maybeNavigate} on:keydown={maybeFocusSearch} />
 
 <svelte:head>
   {#if builds}
-    {@const build_number =
-      version === "latest" ? builds[0].build_number : version}
     <!-- Alternate language links disabled -->
   {/if}
 </svelte:head>
@@ -521,7 +510,7 @@ Anyway?`,
       </InterpolatedTranslation>
     </p>
 
-    {#if locale}
+    <!-- {#if locale}
       <p style="font-weight: bold">
         <InterpolatedTranslation
           str={t(
@@ -535,7 +524,7 @@ Anyway?`,
             >Transifex</a>
         </InterpolatedTranslation>
       </p>
-    {/if}
+    {/if} -->
 
     <h2>{t("Catalogs")}</h2>
     <ul>
@@ -613,8 +602,6 @@ Anyway?`,
     <span style="white-space: nowrap">
       {t("Language:")}
       {#if builds}
-        {@const build_number =
-          version === "latest" ? builds[0].build_number : version}
         <select
           value={locale || "en"}
           on:change={(e) => {
@@ -625,6 +612,9 @@ Anyway?`,
             location.href = url.toString();
           }}>
           <option value="en">English</option>
+          {#each (builds[0].langs ?? []).filter((lang) => lang !== "en") as lang}
+            <option value={lang}>{getLanguageName(lang)}</option>
+          {/each}
         </select>
       {:else}
         <select disabled><option>{t("Loading...")}</option></select>
