@@ -112,17 +112,17 @@ const tilesets = [
 const normalizeTemplate = (t: string) => (t === "null" || !t ? "" : t);
 function loadTileset(): string {
   try {
-    const templ = localStorage.getItem("cdda-guide:tileset");
-    if (!templ) return "";
+    const templ = localStorage.getItem("ctlg-guide:tileset");
+    if (!templ) return tilesets[0].url;
     return normalizeTemplate(templ);
   } catch (e) {
-    return "";
+    return tilesets[0].url;
   }
 }
 function saveTileset(url: string) {
   try {
-    if (!url) localStorage.removeItem("cdda-guide:tileset");
-    else localStorage.setItem("cdda-guide:tileset", normalizeTemplate(url));
+    if (!url) localStorage.removeItem("ctlg-guide:tileset");
+    else localStorage.setItem("ctlg-guide:tileset", normalizeTemplate(url));
   } catch (e) {
     /* swallow security errors, which can happen when in incognito mode */
   }
