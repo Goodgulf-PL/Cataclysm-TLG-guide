@@ -28,6 +28,51 @@ $: tile = typeHasTile(item)
   : null;
 $: baseUrl = $tileData?.baseUrl;
 
+$: containerWidth = tile_info ? tile_info.width * tile_info.pixelscale : 32;
+$: containerHeight = tile_info ? tile_info.height * tile_info.pixelscale : 32;
+$: minX = tile && tile_info ? calculateMinX(tile, tile_info) : 0;
+$: minY = tile && tile_info ? calculateMinY(tile, tile_info) : 0;
+$: if (tile && tile_info) {
+  let maxX = 0,
+    maxY = 0;
+  if (tile.fg) {
+    const right = (tile.fg.offx + tile.fg.width) * tile_info.pixelscale;
+    const bottom = (tile.fg.offy + tile.fg.height) * tile_info.pixelscale;
+    maxX = Math.max(maxX, right);
+    maxY = Math.max(maxY, bottom);
+  }
+  if (tile.bg) {
+    const right = (tile.bg.offx + tile.bg.width) * tile_info.pixelscale;
+    const bottom = (tile.bg.offy + tile.bg.height) * tile_info.pixelscale;
+    maxX = Math.max(maxX, right);
+    maxY = Math.max(maxY, bottom);
+  }
+  containerWidth = Math.max(containerWidth, maxX - minX);
+  containerHeight = Math.max(containerHeight, maxY - minY);
+}
+
+function calculateMinX(tile: TileInfo, tile_info: any): number {
+  let minX = 0;
+  if (tile.fg) {
+    minX = Math.min(minX, tile.fg.offx * tile_info.pixelscale);
+  }
+  if (tile.bg) {
+    minX = Math.min(minX, tile.bg.offx * tile_info.pixelscale);
+  }
+  return minX;
+}
+
+function calculateMinY(tile: TileInfo, tile_info: any): number {
+  let minY = 0;
+  if (tile.fg) {
+    minY = Math.min(minY, tile.fg.offy * tile_info.pixelscale);
+  }
+  if (tile.bg) {
+    minY = Math.min(minY, tile.bg.offy * tile_info.pixelscale);
+  }
+  return minY;
+}
+
 const sym =
   item.type === "vehicle_part" && item.variants
     ? item.variants[0].symbols[0]
@@ -217,8 +262,8 @@ function css(obj: Record<string, string>) {
 {#if tile}
   <div
     style={css({
-      width: `${tile_info.width * tile_info.pixelscale}px`,
-      height: `${tile_info.height * tile_info.pixelscale}px`,
+      width: `${containerWidth}px`,
+      height: `${containerHeight}px`,
     })}
     class="tile-icon">
     {#if tile.bg != null}
@@ -233,7 +278,9 @@ function css(obj: Record<string, string>) {
           "background-position": `${-tile.bg.tx * tile.bg.width}px ${
             -tile.bg.ty * tile.bg.height
           }px`,
-          transform: `scale(${tile_info.pixelscale}) translate(${tile.bg.offx}px, ${tile.bg.offy}px)`,
+          transform: `scale(${tile_info.pixelscale}) translate(${
+            tile.bg.offx - minX / tile_info.pixelscale
+          }px, ${tile.bg.offy - minY / tile_info.pixelscale}px)`,
         })} />
     {/if}
     {#if tile.fg != null}
@@ -248,7 +295,9 @@ function css(obj: Record<string, string>) {
           "background-position": `${-tile.fg.tx * tile.fg.width}px ${
             -tile.fg.ty * tile.fg.height
           }px`,
-          transform: `scale(${tile_info.pixelscale}) translate(${tile.fg.offx}px, ${tile.fg.offy}px)`,
+          transform: `scale(${tile_info.pixelscale}) translate(${
+            tile.fg.offx - minX / tile_info.pixelscale
+          }px, ${tile.fg.offy - minY / tile_info.pixelscale}px)`,
         })} />
     {/if}
   </div>
@@ -258,7 +307,7 @@ function css(obj: Record<string, string>) {
 
 <style>
 .tile-icon {
-  vertical-align: middle;
+  vertical-align: top;
   display: inline-block;
   position: relative;
 }
