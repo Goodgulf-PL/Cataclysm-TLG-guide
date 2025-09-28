@@ -40,8 +40,20 @@ data.setVersion(version, locale);
 
 const tilesets = [
   {
+    name: "MSXotto+",
+    url: "https://raw.githubusercontent.com/Cataclysm-TLG/Cataclysm-TLG/{version}/gfx/MshockXotto%2B",
+  },
+  {
     name: "AltiCa",
     url: "https://raw.githubusercontent.com/Cataclysm-TLG/Cataclysm-TLG/{version}/gfx/Altica",
+  },
+  {
+    name: "ASCIITileset",
+    url: "https://raw.githubusercontent.com/Cataclysm-TLG/Cataclysm-TLG/{version}/gfx/ASCIITileset",
+  },
+  {
+    name: "ASCII_Overmap",
+    url: "https://raw.githubusercontent.com/Cataclysm-TLG/Cataclysm-TLG/{version}/gfx/ASCII_Overmap",
   },
   {
     name: "BrownLikeBears",
@@ -56,24 +68,44 @@ const tilesets = [
     url: "https://raw.githubusercontent.com/Cataclysm-TLG/Cataclysm-TLG/{version}/gfx/Cuteclysm",
   },
   {
+    name: "GiantDays",
+    url: "https://raw.githubusercontent.com/Cataclysm-TLG/Cataclysm-TLG/{version}/gfx/GiantDays",
+  },
+  {
     name: "Hollow Moon",
     url: "https://raw.githubusercontent.com/Cataclysm-TLG/Cataclysm-TLG/{version}/gfx/HollowMoon",
   },
   {
-    name: "MSXotto+",
-    url: "https://raw.githubusercontent.com/Cataclysm-TLG/Cataclysm-TLG/{version}/gfx/MshockXotto%2B",
+    name: "Larwick_Overmap",
+    url: "https://raw.githubusercontent.com/Cataclysm-TLG/Cataclysm-TLG/{version}/gfx/Larwick_Overmap",
   },
   {
     name: "NeoDays",
     url: "https://raw.githubusercontent.com/Cataclysm-TLG/Cataclysm-TLG/{version}/gfx/NeoDaysTileset",
   },
   {
+    name: "PenAndPaper",
+    url: "https://raw.githubusercontent.com/Cataclysm-TLG/Cataclysm-TLG/{version}/gfx/PenAndPaper",
+  },
+  {
     name: "RetroDays",
     url: "https://raw.githubusercontent.com/Cataclysm-TLG/Cataclysm-TLG/{version}/gfx/RetroDaysTileset",
   },
   {
+    name: "SmashButton_iso",
+    url: "https://raw.githubusercontent.com/Cataclysm-TLG/Cataclysm-TLG/{version}/gfx/SmashButton_iso",
+  },
+  {
+    name: "SurveyorsMap",
+    url: "https://raw.githubusercontent.com/Cataclysm-TLG/Cataclysm-TLG/{version}/gfx/SurveyorsMap",
+  },
+  {
     name: "UltiCa",
     url: "https://raw.githubusercontent.com/Cataclysm-TLG/Cataclysm-TLG/{version}/gfx/UltimateCataclysm",
+  },
+  {
+    name: "Ultica_iso",
+    url: "https://raw.githubusercontent.com/Cataclysm-TLG/Cataclysm-TLG/{version}/gfx/Ultica_iso",
   },
 ];
 
