@@ -12,4 +12,4 @@ _More popular than the Celestial Home Care Omnibus, better selling than Fifty-th
 
 ## Acknowledgements
 
-The Hitchhiker's Guide to the Cataclysm: The Last Generation is maintained by [**@Goodgulf-PL**]. It is a fork of [Hitchhiker's Guide to the Cataclysm] (https://cdda-guide.nornagon.net)
+The Hitchhiker's Guide to the Cataclysm: The Last Generation is maintained by [**@Goodgulf-PL**]. It is a fork of [Hitchhiker's Guide to the Cataclysm](https://cdda-guide.nornagon.net)
