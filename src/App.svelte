@@ -549,14 +549,8 @@ Anyway?`,
             else url.searchParams.set("v", buildNumber);
             location.href = url.toString();
           }}>
-          <optgroup label="Stable">
-            {#each builds.filter((b) => !b.prerelease) as build}
-              <option value={build.build_number}
-                >{build.build_number}{#if build.build_number === builds[0].build_number}&nbsp;(latest){/if}</option>
-            {/each}
-          </optgroup>
           <optgroup label="Experimental">
-            {#each builds.filter((b) => b.prerelease) as build}
+            {#each builds as build}
               <option value={build.build_number}
                 >{build.build_number}{#if build.build_number === builds[0].build_number}&nbsp;(latest){/if}</option>
             {/each}
