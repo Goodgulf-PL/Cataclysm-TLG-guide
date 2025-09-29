@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
   <ShortName>HHG</ShortName>
-  <LongName>The Hitchhiker's Guide to the Cataclysm: The Last Generation</LongName>
+  <LongName>The Forbidden Hitchhiker's Guide to the Cataclysm: The Last Generation</LongName>
   <Description>Search the Hitchhiker's Guide to the Cataclysm</Description>
   <Url type="text/html" method="get" template="https://ctlg-guide.org/search/{searchTerms}"/>
   <Image height="16" width="16" type="image/png">https://ctlg-guide.org/favicon.png</Image>

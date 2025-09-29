@@ -1,4 +1,4 @@
-# The Hitchhiker's Guide to the Cataclysm: The Last Generation
+# The Forbidden Hitchhiker's Guide to the Cataclysm: The Last Generation
 
 <img src="src/assets/dont_panic.png" width=300 align="right" />
 
@@ -51,4 +51,4 @@ _More popular than the Celestial Home Care Omnibus, better selling than Fifty-th
 
 ## Acknowledgements
 
-The Hitchhiker's Guide to the Cataclysm: The Last Generation is maintained by [**@Goodgulf-PL**](https://github.com/Goodgulf-PL). It is a fork of [Hitchhiker's Guide to the Cataclysm](https://cdda-guide.nornagon.net)
+The Forbidden Hitchhiker's Guide to the Cataclysm: The Last Generation is maintained by [**@Goodgulf-PL**](https://github.com/Goodgulf-PL). It is a fork of [Hitchhiker's Guide to the Cataclysm](https://cdda-guide.nornagon.net)
