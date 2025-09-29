@@ -1,2 +1,5 @@
-/opensearch.xml
-  Content-Type: application/opensearchdescription+xml
+ /opensearch.xml
+   Content-Type: application/opensearchdescription+xml
+
+/*
+  X-Robots-Tag: noindex
