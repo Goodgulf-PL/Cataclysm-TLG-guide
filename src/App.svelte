@@ -160,12 +160,12 @@ $: if (item && item.id && $data && $data.byIdMaybe(item.type as any, item.id)) {
   const it = $data.byId(item.type as any, item.id);
   document.title = `${singularName(
     it
-  )} - The Forbidden Hitchhiker's Guide to the Cataclysm: The Last Generation`;
+  )} - The Forbidden Forbidden Hitchhiker's Guide to the Cataclysm: The Last Generation`;
 } else if (item && !item.id && item.type) {
-  document.title = `${item.type} - The Forbidden Hitchhiker's Guide to the Cataclysm: The Last Generation`;
+  document.title = `${item.type} - The Forbidden Forbidden Hitchhiker's Guide to the Cataclysm: The Last Generation`;
 } else {
   document.title =
-    "The Forbidden Hitchhiker's Guide to the Cataclysm: The Last Generation";
+    "The Forbidden Forbidden Hitchhiker's Guide to the Cataclysm: The Last Generation";
 }
 
 let search: string = "";
@@ -332,7 +332,7 @@ newRandomPage();
           href={import.meta.env.BASE_URL + location.search}
           on:click={() => (search = "")}
           ><span class="wide"
-            >Hitchhiker's Guide to the Cataclysm: The Last Generation</span
+            >Forbidden Hitchhiker's Guide to the Cataclysm: The Last Generation</span
           ><span class="narrow">HHG: TLG</span></a>
       </strong>
     </div>
@@ -417,7 +417,7 @@ files in the game itself.`,
         slot3="link_table"
         slot4="link_zombie">
         <strong slot="0"
-          >Hitchhiker's Guide to the Cataclysm: The Last Generation</strong>
+          >Forbidden Hitchhiker's Guide to the Cataclysm: The Last Generation</strong>
         <a slot="1" href="https://github.com/Cataclysm-TLG/Cataclysm-TLG"
           >Cataclysm: The Last Generation</a>
         <a
