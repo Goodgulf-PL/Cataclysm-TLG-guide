@@ -160,12 +160,12 @@ $: if (item && item.id && $data && $data.byIdMaybe(item.type as any, item.id)) {
   const it = $data.byId(item.type as any, item.id);
   document.title = `${singularName(
     it
-  )} - The Forbidden Forbidden Hitchhiker's Guide to the Cataclysm: The Last Generation`;
+  )} - The Forbidden Hitchhiker's Guide to the Cataclysm: The Last Generation`;
 } else if (item && !item.id && item.type) {
-  document.title = `${item.type} - The Forbidden Forbidden Hitchhiker's Guide to the Cataclysm: The Last Generation`;
+  document.title = `${item.type} - The Forbidden Hitchhiker's Guide to the Cataclysm: The Last Generation`;
 } else {
   document.title =
-    "The Forbidden Forbidden Hitchhiker's Guide to the Cataclysm: The Last Generation";
+    "The Forbidden Hitchhiker's Guide to the Cataclysm: The Last Generation";
 }
 
 let search: string = "";
